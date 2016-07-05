@@ -73,18 +73,18 @@ angular.module('ui.tab.scroll', [])
 
           template: [
             '<div class="ui-tabs-scrollable" ng-class="{\'show-drop-down\': !hideDropDown}">',
-            '<button type="button" ng-mousedown="scrollButtonDown(\'left\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
-            ' ng-disabled="disableLeft" class="btn nav-button left-nav-button"' +
-            ' tooltip-placement="{{tooltipLeftDirection}}" uib-tooltip-html="tooltipLeftHtml"></button>',
-            '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude></div>',
+              '<button type="button" ng-mousedown="scrollButtonDown(\'left\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
+              ' ng-disabled="disableLeft" class="btn nav-button left-nav-button glyphicon glyphicon-menu-left"' +
+              ' tooltip-placement="{{tooltipLeftDirection}}" uib-tooltip-html="tooltipLeftHtml"></button>',
+              '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude></div>',
               '<button type="button" ng-mousedown="scrollButtonDown(\'right\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
-              ' ng-disabled="disableRight" class="btn nav-button right-nav-button"' +
+              ' ng-disabled="disableRight" class="btn nav-button right-nav-button glyphicon glyphicon-menu-right"' +
               ' tooltip-placement="{{tooltipRightDirection}}" uib-tooltip-html="tooltipRightHtml"></button>',
-              '<div class="btn-group" uib-dropdown dropdown-append-to-body ng-hide="hideDropDown">',
-                '<button type="button" class="btn" uib-dropdown-toggle></button>',
+              '<div class="btn-group dropup" uib-dropdown ng-hide="hideDropDown">',
+                '<button type="button" class="btn glyphicon glyphicon-menu-hamburger" uib-dropdown-toggle></button>',
                 '<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">',
                   '<li role="menuitem" ng-repeat="tab in dropdownTabs" ng-class="{\'disabled\': tab.disabled}" ng-click="activateTab(tab)">',
-                    '<a href><span class="dropDownTabActiveMark" ng-style="{\'visibility\': tab.active?\'visible\':\'hidden\'}"></span>{{tab.tabScrollTitle}}</a>',
+                    '<a href ng-class="{\'dropDownTabActiveMark\': tab.active}"><span class="dropDownTabActiveMark" ng-style="{\'visibility\': tab.active?\'visible\':\'hidden\'}"></span>{{tab.tabScrollTitle}}</a>',
                   '</li>',
                 '</ul>',
               '</div>',
