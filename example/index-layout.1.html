@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="TabScrollDemo" ng-controller="MainCtrl as main">
+
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <script src="app.js"></script>
+
+  <!-- links to files of angular-ui-tab-scroll  -->
+  <link rel="stylesheet" href="../angular-ui-tab-scroll-bottom.css" />
+  <script src="../angular-ui-tab-scroll.js"></script>
+
+  <style>
+    html, body { height:100% }
+
+    .tabContent{
+      background-color: #FBFBFB;
+      height: 100%;
+      text-align: center;
+      padding-top: 50px
+    }
+  </style>
+
+  <!--<link rel="stylesheet" href="tabset.1.css" />-->
+
+</head>
+
+<body>
+<div style="height: 100%; background-color:#F0F0F0;">
+  <scrollable-tabset api="main.scrlTabsApi" add-tab-handler="main.addTabCallback()" class="tabs-bottom" show-tooltips="false">
+    <uib-tabset style="height: 100%" template-url="tabset.1.html">
+      <uib-tab>
+        <uib-tab-heading>First tab</uib-tab-heading>
+        <div class="tabContent">First tab content</div>
+      </uib-tab>
+      <uib-tab ng-repeat="tab in main.tabs">
+        <uib-tab-heading>{{tab.heading}}</uib-tab-heading>
+        <div class="tabContent">{{tab.content}}</div>
+      </uib-tab>
+    </uib-tabset>
+  </scrollable-tabset>
+
+</div>
+</body>
+
+</html>
