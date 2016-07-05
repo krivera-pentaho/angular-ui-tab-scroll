@@ -12,6 +12,8 @@
   <script src="../angular-ui-tab-scroll.js"></script>
 
   <style>
+    html, body { height:100% }
+
     .tabContent{
       background-color: #FBFBFB;
       height: 100%;
@@ -25,13 +27,9 @@
 </head>
 
 <body>
-<div style="padding:30px">
-  <h1>Demo for angular-ui-tab-scroll</h1>
-  <a href="https://github.com/VersifitTechnologies/angular-ui-tab-scroll">https://github.com/VersifitTechnologies/angular-ui-tab-scroll</a>
-
-  <br/><br/><br/><br/>
+<div style="height: 100%; background-color:#F0F0F0;">
   <scrollable-tabset api="main.scrlTabsApi" add-tab-handler="main.addTabCallback()" class="tabs-bottom" show-tooltips="false">
-    <uib-tabset style="height: 300px" template-url="tabset.html">
+    <uib-tabset style="height: 100%" template-url="tabset.html">
       <uib-tab>
         <uib-tab-heading>First tab</uib-tab-heading>
         <div class="tabContent">First tab content</div>
@@ -40,28 +38,9 @@
         <uib-tab-heading>{{tab.heading}}</uib-tab-heading>
         <div class="tabContent">{{tab.content}}</div>
       </uib-tab>
-      <!--<uib-tab>
-        <uib-tab-heading>Last tab</uib-tab-heading>
-        <div class="tabContent">Last tab content</div>
-      </uib-tab>-->
     </uib-tabset>
   </scrollable-tabset>
 
-  <br/><br/><br/><br/><br/><br/>
-  <button type="button" class="btn btn-default" ng-click="main.addTab()">add tab</button>
-  <button type="button" class="btn btn-default" ng-click="main.removeTab()">remove tab</button>
-  <br/><br/><br/>
-  <h4>usage of api:</h4>
-  <button type="button" class="btn btn-default" ng-click="main.reCalcScroll()">re-calculate scroll</button>
-  <div class="btn-group" uib-dropdown>
-    <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle>
-      Scroll into view <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
-      <li role="menuitem" ng-click="main.scrollIntoView()"><a href="#">Selected tab</a></li>
-      <li role="menuitem" ng-click="main.scrollIntoView(6)"><a href="#">Tab index 6</a></li>
-    </ul>
-  </div>
 </div>
 </body>
 

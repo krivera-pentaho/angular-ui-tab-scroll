@@ -1,0 +1,62 @@
+.tabs-bottom > .ui-tabs-scrollable {
+  height: 100%;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .tab-content {
+  border-top-color: transparent;
+  border-bottom: 1px solid #AAA;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs {
+  /*margin-right: -60px;*/
+  height: 50px;
+  background-color: #F0F0F0;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs > li:first-child {
+  padding-left: 10px;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs > li > a {
+  height: 40px;
+  width: 125px;
+  border-color: #AAA;
+  padding: 0 10px;
+  font-family: 'Open Sans-serif';
+  font-size: 14pt;
+  text-align: left;
+  border-radius: 0 0 2px 2px;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs > li.active > a {
+  border-top-color: transparent;
+  border-bottom: 5px solid #005EAA;
+  background-color: #FFF;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0,0,0,0.25);
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs > li:not(.active) > a {
+  border-right-color: transparent;
+  background-color: #F0F0F0;
+  color: #666;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .spacer > div:first-child > .nav-tabs > li:last-child > a {
+  border-right-color: #AAA;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .nav-button, .ui-tabs-scrollable > .dropdown {
+  top: inherit;
+  border-bottom-color: #ddd;
+}
+
+.tabs-bottom > .ui-tabs-scrollable.show-drop-down > .nav-button.left-nav-button {
+  bottom: -35px;
+}
+
+.tabs-bottom > .ui-tabs-scrollable > .dropdown > .dropdown-toggle {
+  border-bottom-color: #ddd;
+}

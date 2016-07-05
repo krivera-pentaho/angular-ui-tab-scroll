@@ -73,10 +73,10 @@ angular.module('ui.tab.scroll', [])
 
           template: [
             '<div class="ui-tabs-scrollable" ng-class="{\'show-drop-down\': !hideDropDown}">',
-              '<button type="button" ng-mousedown="scrollButtonDown(\'left\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
-              ' ng-disabled="disableLeft" class="btn nav-button left-nav-button"' +
-              ' tooltip-placement="{{tooltipLeftDirection}}" uib-tooltip-html="tooltipLeftHtml"></button>',
-              '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude></div>',
+            '<button type="button" ng-mousedown="scrollButtonDown(\'left\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
+            ' ng-disabled="disableLeft" class="btn nav-button left-nav-button"' +
+            ' tooltip-placement="{{tooltipLeftDirection}}" uib-tooltip-html="tooltipLeftHtml"></button>',
+            '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude></div>',
               '<button type="button" ng-mousedown="scrollButtonDown(\'right\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
               ' ng-disabled="disableRight" class="btn nav-button right-nav-button"' +
               ' tooltip-placement="{{tooltipRightDirection}}" uib-tooltip-html="tooltipRightHtml"></button>',
@@ -208,7 +208,7 @@ angular.module('ui.tab.scroll', [])
 
             $scope.activateTab = function(tab) {
               if(tab.disabled)return;
-              tab.active = true;
+              tab.select();
               $timeout(function () {
                 $scope.scrollTabIntoView();
               });
@@ -329,7 +329,8 @@ angular.module('ui.tab.scroll', [])
             $scope.reCalcAll = function() {
               if(!$scope.tabContainer)return;
 
-              $scope.hideButtons = $scope.tabContainer.scrollWidth <= $scope.tabContainer.offsetWidth;
+              //$scope.hideButtons = $scope.tabContainer.scrollWidth <= $scope.tabContainer.offsetWidth;
+              $scope.hideButtons = false;
               $scope.hideDropDown = $scope.userShowDropDown ? $scope.hideButtons : true;
 
               if(!$scope.hideButtons) {
