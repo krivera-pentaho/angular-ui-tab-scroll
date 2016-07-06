@@ -52,7 +52,10 @@ app.controller('MainCtrl', function($document) {
   for(var i=0; i<15; i++) {
     vm.tabs.push({
       heading: 'Tab ' + i,
-      content: 'This is the content for tab ' + i
+      content: 'This is the content for tab ' + i,
+      status: {
+        invalid: i == 0
+      }
     });
   }
 

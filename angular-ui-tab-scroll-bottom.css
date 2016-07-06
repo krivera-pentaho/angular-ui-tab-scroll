@@ -15,11 +15,14 @@
       margin-left: 0px;
       margin-right: calc(-30px - 30px);
       border-top-color: transparent;
-      border-bottom: 1px solid #AAA;
-      margin-bottom: -1px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #ccc;
       position: relative; }
   .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs-container {
     margin-right: -90px;
+    font-family: 'Open Sans', sans serif;
+    font-size: 14px;
+    border-top:1px solid #aaa;
     background-color: #F0F0F0; }
   .ui-tabs-scrollable > .spacer.hidden-buttons > div:first-child .nav-tabs > li:last-child > a {
     border-right-color: #AAA; }
@@ -29,6 +32,8 @@
     border-right-color: #AAA; }
   .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs {
     white-space: nowrap;
+    position: relative;
+    top: -1px;
     overflow: hidden;
     border: none;
     margin-right: 90px;
@@ -39,6 +44,8 @@
       margin: 0; }
       .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li:first-child {
         padding-left: 10px; }
+      .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li:last-child > a {
+        border-right-width: 1px; }
       .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li.active > a {
         border-color: #AAA;
         border-top-color: transparent;
@@ -46,12 +53,7 @@
         background-color: #FFF;
         color: #333;
         box-shadow: 0 0 5px rgba(0,0,0,0.25); }
-      .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li.active + li > a {
-        border-left-color: #F2F2F2; }
-      .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li.active + li > a:hover {
-        border-left-color: #e5e5e5; }
       .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li:not(.active) > a {
-        border-bottom-color: #AAA;
         background-color: #F0F0F0;
         color: #666; }
         .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li:not(.active) > a:hover {
@@ -64,17 +66,19 @@
         line-height: 40px;
         height: 40px;
         width: 125px;
-        font-size: 14pt;
-        font-family: 'Open Sans';
         overflow: hidden;
         background-color: #F0F0F0;
-        border: 1px solid #AAA;
-        border-right-color: transparent;
+        border: 1px solid #aaa;
+        border-width: 1px 0px 1px 1px;
         padding: 0 10px;
         margin: 0;
         color: #666666;
         text-align: left;
         border-radius: 0 0 2px 2px; }
+      .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li > a .tab-ctx {
+        display:none; }
+      .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li > a:hover .tab-ctx {
+        display: block; }
   .ui-tabs-scrollable > .spacer > div:first-child > .tab-content {
     margin-top: -1px;
     border-top: 1px solid #999; }
@@ -104,10 +108,10 @@
     border-bottom-color: #ddd;
     right: 0; }
     .ui-tabs-scrollable > .dropdown > .dropdown-toggle {
+      margin-top: 6px; /* include margin bottom of tab-content */
       width: 30px;
       line-height: 35px;
       height: 35px;
-      font-size: 14pt;
       color: #999;
       text-align: center;
       padding: 0;
@@ -122,26 +126,27 @@
   .ui-tabs-scrollable.show-drop-down > .nav-button.right-nav-button {
     padding: 0;
     outline: none;
-
+    bottom: calc(-35px - 7px); /* include margin bottom of tab-content */
     right: 30px; }
   .ui-tabs-scrollable.show-drop-down > .nav-button.left-nav-button {
     padding: 0;
     outline: none;
-    bottom: -35px;
+    bottom: calc(-35px - 7px); /* include margin bottom of tab-content */
     right: calc(30px + 30px); }
 
-.dropdown-menu {
+ul.dropdown-menu.dropdown-menu-right {
+  bottom: 90%;
+  right: 5px;
   max-height: 300px;
   max-width: 220px;
   overflow: hidden;
   overflow-y: auto;
-  font-family: 'Open Sans';
-  font-size: 14pt;
+  border-radius: 0;
   box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.15); }
   .dropdown-menu > li > a {
     overflow: hidden;
     color: #333;
-    padding: 3px 15px; }
+    padding: 3px 10px; }
     .dropdown-menu > li > a.dropDownTabActiveMark, .dropdown-menu > li > a:hover {
       background-color: #005EAA;
       color: white; }
@@ -157,6 +162,11 @@
         height: 100%;
         overflow: auto; }
 
+.ui-tabs-scrollable .glyphicon.glyphicon-exclamation-sign {
+  padding-right: 5px; }
+  .ui-tabs-scrollable .glyphicon.glyphicon-exclamation-sign::before {
+    color: #c00; }
+
 
 .ui-tabs-scrollable > .spacer > div:first-child .nav-tabs > li > a .tab-ctx {
   float: right;
@@ -168,4 +178,6 @@
   display: none;
   position: absolute;
   min-width: 100px;
+  border-radius: 0;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.15); }
 }

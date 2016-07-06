@@ -9,6 +9,7 @@
 
   <!-- links to files of angular-ui-tab-scroll  -->
   <link rel="stylesheet" href="../angular-ui-tab-scroll-bottom.css" />
+  <link href='../lib/css/fonts/Open%20Sans/Open%20Sans.css' rel='stylesheet' type='text/css'>
   <script src="../angular-ui-tab-scroll.js"></script>
 
   <style>
@@ -32,6 +33,7 @@
     <uib-tabset style="height: 100%" template-url="tabset.1.html">
       <uib-tab ng-repeat="tab in main.tabs">
         <uib-tab-heading>
+          <span class="glyphicon glyphicon-exclamation-sign" ng-show="tab.status.invalid"></span>
           {{tab.heading}}
           <span href class="glyphicon glyphicon-triangle-bottom tab-ctx" ng-click="main.showCtxMenu($event, $index)"></span>
           </span>
