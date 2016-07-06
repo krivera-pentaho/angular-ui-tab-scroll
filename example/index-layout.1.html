@@ -28,18 +28,27 @@
 
 <body>
 <div style="height: 100%; background-color:#F0F0F0;">
-  <scrollable-tabset api="main.scrlTabsApi" add-tab-handler="main.addTabCallback()" class="tabs-bottom" show-tooltips="false" require-nav-btns="true">
+  <scrollable-tabset api="main.scrlTabsApi" show-tooltips="false" require-nav-btns="true">
     <uib-tabset style="height: 100%" template-url="tabset.1.html">
-      <uib-tab>
-        <uib-tab-heading>First tab</uib-tab-heading>
-        <div class="tabContent">First tab content</div>
-      </uib-tab>
       <uib-tab ng-repeat="tab in main.tabs">
-        <uib-tab-heading>{{tab.heading}}</uib-tab-heading>
+        <uib-tab-heading>
+          {{tab.heading}}
+          <span href class="glyphicon glyphicon-triangle-bottom tab-ctx" ng-click="main.showCtxMenu($event, $index)"></span>
+          </span>
+        </uib-tab-heading>
         <div class="tabContent">{{tab.content}}</div>
       </uib-tab>
     </uib-tabset>
   </scrollable-tabset>
+
+  <ul id="tabsCtxMenu" class="dropdown-menu context-menu">
+    <li>
+      <a href ng-click="main.duplicate()">Duplicate</a>
+    </li>
+    <li>
+      <a href ng-click="main.delete()">Delete</a>
+    </li>
+  </ul>
 
 </div>
 </body>

@@ -342,7 +342,7 @@ angular.module('ui.tab.scroll', [])
               if(!$scope.hideButtons) {
 
                 if(!$scope.hideDropDown) {
-                  var allTabs = $scope.tabContainer.querySelectorAll('li');
+                  var allTabs = $scope.tabContainer.querySelectorAll('li.uib-tab');
                   $scope.dropdownTabs = [];
                   angular.forEach(allTabs, function (tab) {
                     var ignore = tab.getAttribute("data-tabScrollIgnore");
@@ -350,7 +350,7 @@ angular.module('ui.tab.scroll', [])
                       var heading = tab.getAttribute("data-tabScrollHeading");
                       var tabScope = angular.element(tab).isolateScope();
                       //push new field to use as title in the drop down.
-                      tabScope.tabScrollTitle = heading ? heading : tab.textContent.trim();
+                      tabScope.tabScrollTitle = heading ? heading : tab.innerText.trim();
                       $scope.dropdownTabs.push(tabScope);
                     }
                   });

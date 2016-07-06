@@ -21,7 +21,7 @@ app.config(function(scrollableTabsetConfigProvider){
   scrollableTabsetConfigProvider.setTooltipRightPlacement('left');
 });
 
-app.controller('MainCtrl', function() {
+app.controller('MainCtrl', function($document) {
   var vm = this;
   vm.tabs = [];
   vm.scrlTabsApi = {};
@@ -56,4 +56,42 @@ app.controller('MainCtrl', function() {
     });
   }
 
+
+
+  $document.on('click', function() {
+    angular.element(document.getElementById("tabsCtxMenu")).css({
+      display: "none"
+    });
+  });
+  vm.selectedTabIndex = null;
+  vm.showCtxMenu = function($event, index) {
+    vm.selectedTabIndex = index;
+    angular.element(document.getElementById("tabsCtxMenu")).css({
+      display: "block",
+      left: $event.pageX + 'px',
+      top: 'auto',
+      bottom: '0px'
+    });
+    $event.preventDefault();
+    $event.stopImmediatePropagation();
+    return false;
+  };
+
+  vm.duplicate = function() {
+    if (vm.selectedTabIndex != null) {
+      var sourceTab = vm.tabs[vm.selectedTabIndex];
+      var duplicatedTab = angular.copy(sourceTab);
+      vm.tabs.splice(vm.selectedTabIndex + 1, 0, duplicatedTab);
+      vm.reCalcScroll();
+    }
+  };
+
+  vm.delete = function() {
+    if (vm.selectedTabIndex != null) {
+      var sourceTab = vm.tabs[vm.selectedTabIndex];
+      var duplicatedTab = angular.copy(sourceTab);
+      vm.tabs.splice(vm.selectedTabIndex, 1);
+      vm.reCalcScroll();
+    }
+  };
 });
