@@ -16,7 +16,8 @@ angular.module('ui.tab.scroll', [])
             tooltipLeftPlacement: 'right',
             tooltipRightPlacement: 'left',
             scrollBy: '50',
-            autoRecalculate: false
+            autoRecalculate: false,
+            requireNavBtns: false
           };
 
           var config = angular.extend({}, defaultConfig);
@@ -40,6 +41,9 @@ angular.module('ui.tab.scroll', [])
             setAutoRecalculate : function(value){
               config.autoRecalculate = (value == true);
             },
+            setRequireNavBtns : function(value){
+              config.requireNavBtns = (value == true);
+            },
             $get: function(){
               return {
                 showDropDown: config.showDropDown,
@@ -47,7 +51,8 @@ angular.module('ui.tab.scroll', [])
                 tooltipLeftPlacement: config.tooltipLeftPlacement,
                 tooltipRightPlacement: config.tooltipRightPlacement,
                 scrollBy: config.scrollBy,
-                autoRecalculate: config.autoRecalculate
+                autoRecalculate: config.autoRecalculate,
+                requireNavBtns: config.requireNavBtns
               };
             }
           };
@@ -68,6 +73,7 @@ angular.module('ui.tab.scroll', [])
             tooltipRightPlacement: '@',
             scrollBy: '@',
             autoRecalculate: '@',
+            requireNavBtns: '@',
             api: '=?'
           },
 
@@ -108,6 +114,7 @@ angular.module('ui.tab.scroll', [])
             $scope.userShowDropDown = $scope.showDropDown ? $scope.showDropDown === 'true' : scrollableTabsetConfig.showDropDown;
             $scope.userShowTooltips = $scope.showTooltips ? $scope.showTooltips === 'true' : scrollableTabsetConfig.showTooltips == true;
             $scope.scrollByPixels = parseInt($scope.scrollBy ? $scope.scrollBy : scrollableTabsetConfig.scrollBy);
+            $scope.userRequireNavBtns = $scope.requireNavBtns ? $scope.requireNavBtns === 'true' : scrollableTabsetConfig.requireNavBtns == true;
 
             $scope.api = {
               doRecalculate: function(){
@@ -329,8 +336,7 @@ angular.module('ui.tab.scroll', [])
             $scope.reCalcAll = function() {
               if(!$scope.tabContainer)return;
 
-              //$scope.hideButtons = $scope.tabContainer.scrollWidth <= $scope.tabContainer.offsetWidth;
-              $scope.hideButtons = false;
+              $scope.hideButtons = $scope.userRequireNavBtns ? false : $scope.tabContainer.scrollWidth <= $scope.tabContainer.offsetWidth;
               $scope.hideDropDown = $scope.userShowDropDown ? $scope.hideButtons : true;
 
               if(!$scope.hideButtons) {
